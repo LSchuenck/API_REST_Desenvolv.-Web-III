@@ -11,18 +11,6 @@ Disponibiliza informações sobre **livros, autores, categorias e usuários**, c
 - MySQL / MariaDB
 - Laravel Sanctum (autenticação por token)
 
-## Modelo de dados
-
-```
-autor (idautor, nome, nacionalidade, nascimento, biografia)
-  1 ──── N
-livro (idlivro, titulo, isbn, anopublicacao, descricao, paginas, idautor, idcategoria)
-  N ──── 1
-categoria (idcategoria, nome, descricao)
-
-users (id, name, email, password)
-```
-
 As tabelas são criadas pelas **migrations** do Laravel (`database/migrations`).
 
 ---
@@ -114,16 +102,6 @@ curl -X POST http://localhost:8000/api/autores \
   -H "Authorization: Bearer SEU_TOKEN" \
   -d '{"nome": "Machado de Assis"}'
 ```
-
-### Problemas comuns
-
-| Erro | Causa |
-|---|---|
-| `Could not send request` no Postman | O `php artisan serve` não está rodando |
-| `SQLSTATE[HY000] [2002]` | O banco não está ligado ou a porta do `.env` está errada |
-| `401` em Cadastrar / Atualizar / Remover | Falta fazer o Login (ou foi feito Logout) |
-| `422` ao cadastrar livro | O autor ou a categoria informados ainda não existem |
-
 ---
 
 ## Endpoints
